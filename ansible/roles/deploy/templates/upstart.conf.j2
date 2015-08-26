@@ -1,0 +1,20 @@
+#!upstart
+description "Rippled Peers API Controller"
+
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on [!12345]
+
+env NODE_ENV="production"
+env PORT=1337
+
+setuid {{deploy_user}}
+setgid {{deploy_user}}
+
+chdir /opt/rippled-peers-api
+exec /usr/bin/npm start
+
+respawn
+
+respawn limit 10 90
+
+

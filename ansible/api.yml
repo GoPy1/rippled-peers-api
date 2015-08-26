@@ -1,0 +1,11 @@
+- name: Ripple Peers API
+  hosts: staging
+  remote_user: ubuntu
+  sudo: yes
+  vars:
+    deploy_user: ubuntu
+  roles:
+    - common
+    - nginx
+    - nodejs
+    - deploy

@@ -1,0 +1,4 @@
+- name: Set hostname
+  shell: hostname `cat /etc/hostname`
+- name: Reload collectd
+  service: name=collectd state=restarted
