@@ -2,6 +2,7 @@
 - name: Download the api source from github
   git: repo=https://github.com/ripple/rippled-peers-api
        dest=/opt/rippled-peers-api
+       force=yes
 
 - name: Grant ownership of application to deploy user
   file: path=/opt/rippled-peers-api owner={{deploy_user}}
