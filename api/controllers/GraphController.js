@@ -23,6 +23,10 @@ module.exports = {
    * @apiSuccess {Integer} node.out number of outbound tcp connects of the rippled
    * @apiSuccess {String} node.version rippled version of the peer node
    * @apiSuccess {Integer} node.uptime number of seconds the peer node has been online
+   * @apiSuccess {Array} links Array of links between nodes
+   * @apiSuccess {Array} links.source source of link
+   * @apiSuccess {Array} links.target target of link
+   * @apiSuccess {Array} links.value value of link
   */
 
   index: function (req, res) {
