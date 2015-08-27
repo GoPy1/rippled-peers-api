@@ -31,4 +31,14 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'GET /peers': {
+    controller: 'PeersController',
+    action: 'index'
+  },
+
+  'GET /graph': {
+    controller: 'GraphController',
+    action: 'index'
+  }
 };
