@@ -1,5 +1,0 @@
-{% if ec2_tag_environment == "production" %}
-{{ec2_tag_role}}.rippletest.net
-{% else %}
-{{ec2_tag_role}}.{{ec2_tag_environment}}.rippletest.net
-{% endif %}
