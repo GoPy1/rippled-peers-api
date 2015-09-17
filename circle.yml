@@ -12,7 +12,7 @@ test:
 
 deployment:
   staging:
-    branch: staging
+    branch: hack/dockerize
     commands:
       - ./push-to-docker.sh staging
   production:
