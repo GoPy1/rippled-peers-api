@@ -1,31 +1,33 @@
 import http from 'superagent'
+var HbaseClient = require('crawler-hbase').Client;
 
 module.exports = {
 
   listPeers: function() {
-
+    var hbaseClient = new HbaseClient(Config.get('HBASE_URL'))
     return new Promise((resolve, reject) => {
-
-      http
-        .get(`${Config.get('PEERS_API')}/rippleds`)
-        .end(function(error, response) {
-          if (error) {
-            reject(error)
-          } else {
-
-            resolve(_.map(response.body, peer => {
-              return {
-                public_key: peer.public_key,
-                ip_address: peer.ipp,
-                version: peer.version,
-                uptime: peer.uptime,
-                inbound_connections: peer.in,
-                outbound_connections: peer.out
-              }
-            }))
-          }
-        })
-    })
-  }
+      hbaseClient.getCrawlInfo()
+      .then(function(crawlInfo) {
+        var key = crawlInfo.rowkey;
+        return hbaseClient.getCrawlNodeStats(key)
+      })
+      .then(function(nodeStats) {
+        return resolve(_.map(nodeStats, function(r) {
+          return {
+            'version': r.version,
+            'uptime': parseInt(r.uptime),
+            'inbound_connections': parseInt(r.in_count),
+            'outbound_connections': parseInt(r.out_count),
+            'public_key': r.pubkey,
+            'in_add_count': r.in_add_count,
+            'out_add_count': r.out_add_count,
+            'in_drop_count': r.in_drop_count,
+            'out_drop_count': r.out_drop_count,
+            'ip_address': r.ipp,
+          };
+        }));
+      });
+    });
+  },
 } 
 
