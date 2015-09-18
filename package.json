@@ -11,7 +11,7 @@
     "babel": "^5.8.21",
     "babel-runtime": "^5.8.20",
     "browserify": "^11.0.1",
-    "crawler-hbase": "latest",
+    "crawler-hbase": "^1.1.12",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
