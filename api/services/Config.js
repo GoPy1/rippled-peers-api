@@ -1,10 +1,11 @@
-var config = require("nconf")
+var config = require('nconf')
 
-config.env()
+config.env();
 
 config.defaults({
-  "PEERS_API": "http://10.30.72.248:1234"
-})
+  'HBASE_URL': '127.0.0.1:9090',
+});
 
-module.exports = config
+
+module.exports = config;
 
