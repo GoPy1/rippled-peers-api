@@ -24,10 +24,10 @@ module.exports = {
               'in': parseInt(r.in_count),
               'out': parseInt(r.out_count),
               'public_key': r.pubkey,
-              'in_add_count': r.in_add_count,
-              'out_add_count': r.out_add_count,
-              'in_drop_count': r.in_drop_count,
-              'out_drop_count': r.out_drop_count,
+              'in_add_count': parseInt(r.in_add_count),
+              'out_add_count': parseInt(r.out_add_count),
+              'in_drop_count': parseInt(r.in_drop_count),
+              'out_drop_count': parseInt(r.out_drop_count),
               'ipp': r.ipp,
             };
             results.nodes.push(node);
